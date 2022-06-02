@@ -12,20 +12,18 @@ const Trending = () => {
 
   const [page, setPage] = useState(1);
 
-  const fetchTrending = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=84f0af452a32db35bc96d30668b86d61&page=${page}`
-    );
-
-    console.log(data.results)
-    setContent(data.results);
-  };
-
-
   useEffect(() => {
     window.scroll(0, 0);
+    const fetchTrending = async () => {
+      const { data } = await axios.get(
+        `https://api.themoviedb.org/3/trending/all/day?api_key=84f0af452a32db35bc96d30668b86d61&page=${page}`
+      );
+  
+      console.log(data.results)
+      setContent(data.results);
+    };
     fetchTrending();
-  }, [page])
+  }, [page]);
 
   
 
